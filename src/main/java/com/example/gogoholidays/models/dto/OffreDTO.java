@@ -1,8 +1,12 @@
 package com.example.gogoholidays.models.dto;
 
+import com.example.gogoholidays.models.dto.SmalDTO.SmalDestinationDTO;
+import com.example.gogoholidays.models.entity.Destination;
 import com.example.gogoholidays.models.entity.TypeOffre;
 import lombok.Builder;
 import lombok.Data;
+
+import java.util.List;
 
 
 @Data
@@ -13,4 +17,5 @@ public class OffreDTO {
     private TypeOffre type;
     private double prix;
     private int nbplacetotal;
+    private List<SmalDestinationDTO> destinations;
 }

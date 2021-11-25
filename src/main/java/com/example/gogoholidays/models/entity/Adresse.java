@@ -6,32 +6,26 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 
-@Table(name = "offre")
+@Table(name = "adresse")
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class Offre {
+public class Adresse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     @Column(nullable = false)
-    private String titre;
-
-    @Enumerated( EnumType.STRING )
-    private TypeOffre type;
-
-    @Column(nullable = false, columnDefinition = "DECIMAL(10,2)")
-    private double prix;
-
+    private String pays;
     @Column(nullable = false)
-    private int nbplacetotal;
+    private String ville;
+    @Column(nullable = false)
+    private String rue;
+    @Column(nullable = false)
+    private int numero;
 
-    @OneToMany(mappedBy = "destination")
-    private List<Destination> destinations;
-
+    @OneToOne(mappedBy = "adresseDestination")
+    private Destination conserneDestination;
 }
