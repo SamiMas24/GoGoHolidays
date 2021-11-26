@@ -27,7 +27,8 @@ public class Trajet {
     @JoinColumn(name = "arrive_destination", foreignKey = @ForeignKey(name = "FK_arrive_destination"))
     private Destination arrive;
 
-    @OneToOne(fetch = FetchType.LAZY, orphanRemoval = false)
+    @ManyToOne
     @JoinColumn(name = "transport_trajet", foreignKey = @ForeignKey(name = "FK_transport_trajet"))
     private Transport transport;
+
 }

@@ -5,17 +5,30 @@ import com.example.gogoholidays.models.entity.Offre;
 import com.example.gogoholidays.models.form.OffreForm;
 import org.springframework.stereotype.Service;
 
+import java.util.stream.Collectors;
+
 @Service
 public class OffreMapper implements BaseMapper<OffreDTO, OffreForm, Offre> {
+    private final DestinationMapper destinationMapper;
+    public OffreMapper(DestinationMapper destinationMapper) {
+        this.destinationMapper = destinationMapper;
+    }
 
     @Override
     public OffreDTO toDto(Offre entity) {
         if(entity==null)return null;
         return OffreDTO.builder()
+                .id(entity.getId())
                 .titre(entity.getTitre())
                 .type(entity.getType())
                 .prix(entity.getPrix())
                 .nbplacetotal(entity.getNbplacetotal())
+                .destinations(
+                        entity.getDestinations()
+                                .stream()
+                                .map(destinationMapper::toSmallDto)
+                                .collect(Collectors.toList())
+                )
                 .build();
     }
 

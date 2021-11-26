@@ -9,8 +9,8 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
-@Table(name = "destination")
 @Entity
+@Table(name = "destination")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter

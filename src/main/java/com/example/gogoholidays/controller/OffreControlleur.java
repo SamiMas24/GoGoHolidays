@@ -1,6 +1,8 @@
 package com.example.gogoholidays.controller;
 
+import com.example.gogoholidays.models.dto.DestinationDTO;
 import com.example.gogoholidays.models.dto.OffreDTO;
+import com.example.gogoholidays.models.dto.SmalDTO.SmalDestinationDTO;
 import com.example.gogoholidays.models.form.OffreForm;
 import com.example.gogoholidays.services.OffreService;
 import org.springframework.http.HttpHeaders;
@@ -30,5 +32,11 @@ public class OffreControlleur {
         }
         return service.add(form);
 
+    }
+
+    @GetMapping(path = {"","/","/allDestination"},params = {"id"})
+    public ResponseEntity<List<SmalDestinationDTO>> getAllDestination(@RequestParam int id){
+        return ResponseEntity
+                .ok(service.getAllDestination(id));
     }
 }

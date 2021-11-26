@@ -26,7 +26,7 @@ public class DatabaseFilller implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        saveTransport();
+        /*saveTransport();
         Offre o=saveOffre();
         saveAdresse();
         saveDestination(o,adresseRepository.getById(1));
@@ -37,10 +37,10 @@ public class DatabaseFilller implements InitializingBean {
         saveTrajet(2, destinationRepository.getById(2), destinationRepository.getById(3) );
 
         o=saveOffre();
-        saveDestination(o,adresseRepository.getById(1));
-        saveDestination(o,adresseRepository.getById(2));
+        saveDestination(o,adresseRepository.getById(4));
+        saveDestination(o,adresseRepository.getById(5));
 
-        saveTrajet(1, destinationRepository.getById(1), destinationRepository.getById(2) );
+        saveTrajet(1, destinationRepository.getById(4), destinationRepository.getById(5) );*/
 
 
 

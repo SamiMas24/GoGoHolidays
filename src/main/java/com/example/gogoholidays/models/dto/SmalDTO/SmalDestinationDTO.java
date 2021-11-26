@@ -11,4 +11,6 @@ public class SmalDestinationDTO {
     private LocalDate dateDepart;
     private LocalDate dateArrive;
     private String normeCovid;
+    private SmalAdresseDTO adresseDestination;
+    private SmalTrajetDTO depart;
 }

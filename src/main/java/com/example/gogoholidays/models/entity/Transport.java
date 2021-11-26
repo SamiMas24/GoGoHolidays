@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Table(name = "transport")
 @Entity
@@ -20,6 +21,6 @@ public class Transport {
     @Column(nullable = false)
     private String nom;
 
-    @OneToOne(mappedBy = "transport")
-    private Trajet trajetTransport;
+    @OneToMany(mappedBy = "transport")
+    private List<Trajet> trajetTransport;
 }

@@ -12,7 +12,7 @@ import java.util.List;
 @Data
 @Builder
 public class OffreDTO {
-
+    private int id;
     private String titre;
     private TypeOffre type;
     private double prix;
