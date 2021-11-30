@@ -10,6 +10,8 @@ import java.util.List;
 
 public interface OffreRepository extends JpaRepository<Offre, Integer> {
     List<Offre> getOffreByType(TypeOffre type);
-    @Query(value = "SELECT * FROM offre",nativeQuery = true)
-    List<Offre> getAllOffre();
+    /*@Query(value = "SELECT  DISTINCT(o.id),o.nbplacetotal,o.prix,o.titre,o.type FROM offre o JOIN destination d on o.id=d.dest_offre \n" +
+            "LEFT JOIN trajet de on de.arrive_destination=d.id \n" +
+            "LEFT JOIN trajet a on a.depart_destination=d.id;",nativeQuery = true)
+    List<Offre> getAllOffre();*/
 }

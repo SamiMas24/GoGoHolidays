@@ -6,7 +6,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Table(name = "offre")
 @Entity
@@ -20,6 +22,12 @@ public class Offre {
     private int id;
 
     @Column(nullable = false)
+    private LocalDate dateDepart;
+
+    @Column(nullable = false)
+    private LocalDate dateArrive;
+
+    @Column(nullable = false)
     private String titre;
 
     @Enumerated( EnumType.STRING )
@@ -31,7 +39,14 @@ public class Offre {
     @Column(nullable = false)
     private int nbplacetotal;
 
-    @OneToMany(mappedBy = "destination")
-    private List<Destination> destinations;
+    /*@OneToMany(mappedBy = "destination")
+    private List<Destination> destinations;*/
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "conserne",
+            joinColumns = @JoinColumn(name = "offre_id"),
+            inverseJoinColumns = @JoinColumn(name = "destination_id"))
+    private Set<Destination> destinations;
 
 }

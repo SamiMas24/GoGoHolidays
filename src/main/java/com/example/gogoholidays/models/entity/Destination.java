@@ -19,24 +19,27 @@ public class Destination {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(nullable = false)
-    private LocalDate dateDepart;
-    @Column(nullable = false)
-    private LocalDate dateArrive;
     private String normeCovid;
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name = "dest_offre", foreignKey = @ForeignKey(name = "FK_desti_offre"))
-    private Offre destination;
+    private Offre destination;*/
+
+    @ManyToMany(mappedBy = "destinations", fetch = FetchType.LAZY)
+    private List<Offre> offres;
 
     @OneToOne(fetch = FetchType.LAZY, orphanRemoval = false)
     @JoinColumn(name = "adresse_destination", foreignKey = @ForeignKey(name = "FK_adresse_destination"))
     private Adresse adresseDestination;
 
 
+    @OneToMany(mappedBy = "trajetDepart")
+    private List<Trajet> departDestination;
 
-    @OneToOne(mappedBy = "depart")
-    private Trajet departDestination;
+    @OneToMany(mappedBy = "trajetArrive")
+    private List<Trajet> arriveDestination;
+    /*@ManyToOne(mappedBy = "depart")
+    private List<Trajet> departDestination;
 
-    @OneToOne(mappedBy = "arrive")
-    private Trajet arriveDestination;
+    @ManyToOne(mappedBy = "arrive")
+    private List<Trajet> arriveDestination;*/
 }

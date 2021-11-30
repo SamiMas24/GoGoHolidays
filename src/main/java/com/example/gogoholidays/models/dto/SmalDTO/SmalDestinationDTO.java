@@ -8,9 +8,7 @@ import java.time.LocalDate;
 @Builder
 public class SmalDestinationDTO {
     private int id;
-    private LocalDate dateDepart;
-    private LocalDate dateArrive;
     private String normeCovid;
     private SmalAdresseDTO adresseDestination;
-    private SmalTrajetDTO depart;
+    //private SmalTrajetDTO depart;
 }

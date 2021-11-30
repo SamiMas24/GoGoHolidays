@@ -6,6 +6,8 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Set;
 import java.util.function.LongToIntFunction;
 
 @Component
@@ -27,22 +29,23 @@ public class DatabaseFilller implements InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
         /*saveTransport();
-        Offre o=saveOffre();
         saveAdresse();
-        saveDestination(o,adresseRepository.getById(1));
-        saveDestination(o,adresseRepository.getById(2));
-        saveDestination(o,adresseRepository.getById(3));
+       Destination d1 =saveDestination(adresseRepository.getById(1));
+       Destination d2 =saveDestination(adresseRepository.getById(2));
+       Destination d3 =saveDestination(adresseRepository.getById(3));
+       Offre o=saveOffre(Set.of(d1,d2,d3));
+       saveTrajet(1, destinationRepository.getById(1), destinationRepository.getById(2) );
+       saveTrajet(2, destinationRepository.getById(2), destinationRepository.getById(3) );
+       saveTrajet(1, destinationRepository.getById(3), destinationRepository.getById(1) );
 
-        saveTrajet(1, destinationRepository.getById(1), destinationRepository.getById(2) );
-        saveTrajet(2, destinationRepository.getById(2), destinationRepository.getById(3) );
-
-        o=saveOffre();
-        saveDestination(o,adresseRepository.getById(4));
-        saveDestination(o,adresseRepository.getById(5));
-
-        saveTrajet(1, destinationRepository.getById(4), destinationRepository.getById(5) );*/
-
-
+       /*************************************************/
+       /* d1= saveDestination(adresseRepository.getById(4));
+        d2= saveDestination(adresseRepository.getById(5));
+        d3=saveDestination(adresseRepository.getById(6));
+       o=saveOffre(Set.of(d1,d2,d3));
+       saveTrajet(1, destinationRepository.getById(4), destinationRepository.getById(5) );
+       saveTrajet(1, destinationRepository.getById(5), destinationRepository.getById(6) );
+       saveTrajet(1, destinationRepository.getById(6), destinationRepository.getById(5) );*/
 
     }
     private void saveAdresse(){
@@ -76,34 +79,41 @@ public class DatabaseFilller implements InitializingBean {
         a.setNumero(5);
         a.setVille("Malaga");
         adresseRepository.save(a);
+        a=new Adresse();
+        a.setPays("Espagne1");
+        a.setRue("Nom rue2");
+        a.setNumero(5);
+        a.setVille("Malaga2");
+        adresseRepository.save(a);
 
     }
-    private Offre saveOffre() {
+    private Offre saveOffre(Set<Destination> destinations) {
         Offre offre=new Offre();
         offre.setTitre("voyage Salou-Madrid");
         offre.setType(TypeOffre.CIRCUIT);
         offre.setPrix(1500);
+        offre.setDestinations(destinations);
         offre.setNbplacetotal(50);
+
+        offre.setDateDepart(LocalDate.now());
+        offre.setDateArrive(LocalDate.now());
         offreRepository.save(offre);
         return offre;
 
     }
-    private void saveDestination(Offre offre,Adresse a){
+    private Destination saveDestination(Adresse a){
         Destination d=new Destination();
-        d.setDestination(offre);
-        d.setDateDepart(LocalDate.now());
-        d.setDateArrive(LocalDate.now());
         d.setNormeCovid("https://www.info-coronavirus.be/fr/news/");
         d.setAdresseDestination(a);
         destinationRepository.save(d);
-
+        return d;
 
     }
     private void saveTrajet(int num,Destination depart,Destination arrive){
         Trajet t=new Trajet();
         Transport transport=transRepository.getById(num);
-        t.setDepart(depart);
-        t.setArrive(arrive);
+        t.setTrajetDepart(depart);
+        t.setTrajetArrive(arrive);
         t.setTransport(transport);
         trajetRepository.save(t);
     }

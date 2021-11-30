@@ -43,7 +43,9 @@ public class OffreService implements BaseService<OffreDTO,Integer,OffreForm> {
     @Override
     public OffreDTO add(OffreForm toAdd) {
         Offre offre= mapper.formToEntity(toAdd);
-        return mapper.toDto(offre);
+        System.out.println("=====>"+toAdd);
+       // return mapper.toDto(offre);
+        return null;
     }
 
     @Override

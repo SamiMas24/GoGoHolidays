@@ -3,6 +3,7 @@ package com.example.gogoholidays.models.dto;
 import com.example.gogoholidays.models.dto.SmalDTO.SmalDestinationDTO;
 import com.example.gogoholidays.models.entity.Destination;
 import com.example.gogoholidays.models.entity.Transport;
+import com.example.gogoholidays.models.entity.TypeOffre;
 import lombok.Builder;
 import lombok.Data;
 
@@ -16,5 +17,11 @@ public class TrajetDTO {
 
     private SmalDestinationDTO arriveDestination;
 
-    private Transport transport;
+    private TrajetDTO.TransportDTO transport;
+
+    @Data
+    @Builder
+    public static class TransportDTO{
+        private String nom;
+    }
 }

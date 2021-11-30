@@ -1,6 +1,8 @@
 package com.example.gogoholidays.mapper;
 
+import com.example.gogoholidays.models.dto.DestinationDTO;
 import com.example.gogoholidays.models.dto.OffreDTO;
+import com.example.gogoholidays.models.dto.SmalDTO.SmalOffreDTO;
 import com.example.gogoholidays.models.entity.Offre;
 import com.example.gogoholidays.models.form.OffreForm;
 import org.springframework.stereotype.Service;
@@ -23,6 +25,8 @@ public class OffreMapper implements BaseMapper<OffreDTO, OffreForm, Offre> {
                 .type(entity.getType())
                 .prix(entity.getPrix())
                 .nbplacetotal(entity.getNbplacetotal())
+                .dateDepart(entity.getDateDepart())
+                .dateArrive(entity.getDateArrive())
                 .destinations(
                         entity.getDestinations()
                                 .stream()
@@ -40,6 +44,9 @@ public class OffreMapper implements BaseMapper<OffreDTO, OffreForm, Offre> {
         entity.setType(form.getType());
         entity.setPrix(form.getPrix());
         entity.setNbplacetotal(form.getNbplacetotal());
+        entity.setDateDepart(form.getDateDepart());
+        entity.setDateArrive(form.getDateArrive());
         return entity;
     }
+
 }

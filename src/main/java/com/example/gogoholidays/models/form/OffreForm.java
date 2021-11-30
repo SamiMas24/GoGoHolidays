@@ -7,6 +7,7 @@ import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import java.time.LocalDate;
 
 @Data
 @Validated
@@ -19,5 +20,9 @@ public class OffreForm {
     private double prix;
     @Min(1)
     private int nbplacetotal;
+
+    private LocalDate dateDepart;
+
+    private LocalDate dateArrive;
 
 }

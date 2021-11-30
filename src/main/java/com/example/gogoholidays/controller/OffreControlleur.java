@@ -26,7 +26,6 @@ public class OffreControlleur {
     }
     @PostMapping(path = {"", "/", "/add"})
     public OffreDTO insert(@Valid @RequestBody OffreForm form, @RequestHeader HttpHeaders headers){
-
         for (String key : headers.keySet()) {
             System.out.println( headers.get(key) );
         }

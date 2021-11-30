@@ -6,6 +6,8 @@ import com.example.gogoholidays.models.entity.TypeOffre;
 import lombok.Builder;
 import lombok.Data;
 
+import javax.validation.constraints.Future;
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -17,5 +19,9 @@ public class OffreDTO {
     private TypeOffre type;
     private double prix;
     private int nbplacetotal;
+    @Future
+    private LocalDate dateDepart;
+    @Future
+    private LocalDate dateArrive;
     private List<SmalDestinationDTO> destinations;
 }

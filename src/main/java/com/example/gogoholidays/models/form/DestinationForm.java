@@ -14,7 +14,5 @@ import java.time.LocalDate;
 @Validated
 public class DestinationForm {
     private int id;
-    private LocalDate dateDepart;
-    private LocalDate dateArrive;
     private String normeCovid;
 }

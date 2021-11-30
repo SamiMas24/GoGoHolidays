@@ -5,11 +5,13 @@ import com.example.gogoholidays.models.entity.Trajet;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Builder
 public class TransportDTO {
     private int id;
     private String nom;
 
-    private SmalTrajetDTO trajetTransport;
+    private List<SmalTrajetDTO> trajetTransport;
 }
